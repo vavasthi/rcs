@@ -1,0 +1,241 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://road-condition-recorder-1970.appspot.com/_ah/api",
+  "name" : "sensorrecordendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://road-condition-recorder-1970.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "avasthi.com",
+  "ownerName" : "avasthi.com",
+  "packagePath" : "apps.roadconditionsensor",
+  "methods" : {
+    "sensorrecordendpoint.getSensorRecord" : {
+      "path" : "sensorrecord/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.getSensorRecord",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "sensorrecordendpoint.insertSensorRecord" : {
+      "path" : "sensorrecord",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.insertSensorRecord",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "sensorrecordendpoint.removeSensorRecord" : {
+      "path" : "sensorrecord/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.removeSensorRecord",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "sensorrecordendpoint.updateSensorRecord" : {
+      "path" : "sensorrecord",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.updateSensorRecord",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "sensorrecordendpoint.listSensorRecord" : {
+      "path" : "sensorrecord",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.listSensorRecord",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "SensorRecord" : {
+        "id" : "SensorRecord",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "timestamp" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "altitude" : {
+            "type" : "number"
+          },
+          "bearing" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "latitude" : {
+            "type" : "number"
+          },
+          "longitude" : {
+            "type" : "number"
+          },
+          "speed" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "accuracy" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_SensorRecord" : {
+        "id" : "CollectionResponse_SensorRecord",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "SensorRecord"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.getSensorRecord" : {
+        "response" : {
+          "$ref" : "SensorRecord"
+        }
+      },
+      "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.insertSensorRecord" : {
+        "request" : {
+          "$ref" : "SensorRecord"
+        },
+        "response" : {
+          "$ref" : "SensorRecord"
+        }
+      },
+      "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.removeSensorRecord" : {
+      },
+      "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.updateSensorRecord" : {
+        "request" : {
+          "$ref" : "SensorRecord"
+        },
+        "response" : {
+          "$ref" : "SensorRecord"
+        }
+      },
+      "com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint.listSensorRecord" : {
+        "response" : {
+          "$ref" : "CollectionResponse_SensorRecord"
+        }
+      }
+    }
+  }
+}
