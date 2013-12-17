@@ -1,7 +1,5 @@
 package com.avasthi.apps.roadconditionsensor;
 
-import com.avasthi.apps.roadconditionsensor.EMF;
-
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -14,12 +12,18 @@ import java.util.List;
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 @Api(name = "sensorrecordendpoint", namespace = @ApiNamespace(ownerDomain = "avasthi.com", ownerName = "avasthi.com", packagePath = "apps.roadconditionsensor"))
 public class SensorRecordEndpoint {
+	
+	private static final EntityManagerFactory emfInstance = Persistence
+			.createEntityManagerFactory("transactions-optional");
+
 
 	/**
 	 * This method lists all the entities inserted in datastore.
@@ -164,7 +168,7 @@ public class SensorRecordEndpoint {
 	}
 
 	private static EntityManager getEntityManager() {
-		return EMF.get().createEntityManager();
+		return emfInstance.createEntityManager();
 	}
 
 }

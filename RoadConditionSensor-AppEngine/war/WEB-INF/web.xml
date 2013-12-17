@@ -5,7 +5,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>com.avasthi.apps.roadconditionsensor.DeviceInfoEndpoint,com.avasthi.apps.roadconditionsensor.MessageEndpoint,com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint</param-value>
+   <param-value>com.avasthi.apps.roadconditionsensor.SensorRecordEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

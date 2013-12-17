@@ -30,18 +30,21 @@ public final class R {
         public static final int accelz=0x7f070003;
         public static final int accuracy=0x7f070007;
         public static final int altitude=0x7f07000a;
+        public static final int azimuth=0x7f07000d;
         public static final int bearing=0x7f070008;
         public static final int deltaaccelx=0x7f070004;
         public static final int deltaaccely=0x7f070005;
         public static final int deltaaccelz=0x7f070006;
         public static final int latitude=0x7f07000b;
-        public static final int location=0x7f070010;
+        public static final int location=0x7f070013;
         public static final int longitude=0x7f07000c;
-        public static final int sensorName=0x7f07000d;
-        public static final int sensorVendor=0x7f07000e;
+        public static final int pitch=0x7f07000e;
+        public static final int roll=0x7f07000f;
+        public static final int sensorName=0x7f070010;
+        public static final int sensorVendor=0x7f070011;
         public static final int speed=0x7f070009;
         public static final int timestamp=0x7f070000;
-        public static final int values=0x7f07000f;
+        public static final int values=0x7f070012;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

@@ -10,7 +10,4 @@ public class RoadConditionSensorDataStorage {
 		}
 		return self_;
 	}
-	private void createFile() {
-		
-	}
 }

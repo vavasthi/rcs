@@ -4,21 +4,27 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.hardware.SensorManager;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ListView;
 
 public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	private static final String DATABASE_NAME = "roadconditionsensorDB.db";
 	private static final String TABLE = "sensorrecord";
+	static final String ID_FIELD = "_id";
 	RoadConditionSensorDatabaseSchema schema_;
 	String[] columnNames_ = { "timestamp", // 0
 			"accelx", // 1
@@ -32,7 +38,14 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 			"latitude", // 9
 			"longitude", // 10
 			"altitude", // 11
-			"speed" // 12
+			"speed", // 12
+			"azimuth", // 13
+			"pitch", // 14
+			"roll", // 15
+			"mfx", // 16
+			"mfy", // 17
+			"mfz", // 18
+			"uploaded" // 19
 	};
 	String[] columnTypes_ = { RoadConditionSensorDatabaseSchema.Column.INTEGER, // 0
 			RoadConditionSensorDatabaseSchema.Column.REAL, // 1
@@ -46,7 +59,14 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 			RoadConditionSensorDatabaseSchema.Column.REAL, // 9
 			RoadConditionSensorDatabaseSchema.Column.REAL, // 10
 			RoadConditionSensorDatabaseSchema.Column.REAL, // 11
-			RoadConditionSensorDatabaseSchema.Column.REAL // 12
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 12
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 13
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 14
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 15
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 16
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 17
+			RoadConditionSensorDatabaseSchema.Column.REAL, // 18
+			RoadConditionSensorDatabaseSchema.Column.INTEGER // 19
 	};
 	Long timestamp_ = null; // 0
 	Float accelx_ = null; // 1
@@ -61,6 +81,13 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 	Double longitude_ = null; // 10
 	Double altitude_ = null; // 11
 	Float speed_ = null; // 12
+	Float azimuth_ = null; // 13
+	Float pitch_ = null; // 14
+	Float roll_ = null; // 15
+	Float mfx_ = null; // 16
+	Float mfy_ = null; // 17
+	Float mfz_ = null; // 18
+	Integer uploaded_ = 0; // 19
 
 	public RoadConditionSensorDatabaseHelper(Context context) {
 		super(context, getDatabaseFile(context), null, DATABASE_VERSION);
@@ -73,8 +100,8 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	protected static String getMainMemoryDatabaseDirectory() {
-		String path = Environment.getDataDirectory() + "/"
-				+ R.string.app_name + "/" + "database";
+		String path = Environment.getDataDirectory() + "/" + R.string.app_name
+				+ "/" + "database";
 		File fp = new File(path);
 		if (!fp.canWrite()) {
 			fp.mkdirs();
@@ -90,7 +117,7 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 			fp.mkdirs();
 		}
 		return path;
-		
+
 	}
 
 	protected static String getMainMemoryDatabaseFile() {
@@ -112,17 +139,17 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 
 			// We have a SD card available. We need to find out if some data
 			// exists on main storage.
-//			try {
-//				FileInputStream fis = context.
-//						.openFileInput(getMainMemoryDatabaseFile());
-//				fis.close();
-//			} catch (FileNotFoundException e) {
-//				Log.v("DatabasePath", e.getMessage());
-//				// TODO Auto-generated catch block
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				Log.v("DatabasePath", e.getMessage());
-//			}
+			// try {
+			// FileInputStream fis = context.
+			// .openFileInput(getMainMemoryDatabaseFile());
+			// fis.close();
+			// } catch (FileNotFoundException e) {
+			// Log.v("DatabasePath", e.getMessage());
+			// // TODO Auto-generated catch block
+			// } catch (IOException e) {
+			// // TODO Auto-generated catch block
+			// Log.v("DatabasePath", e.getMessage());
+			// }
 			copyFromInternalToExternalDB();
 			path = getExternalMemoryDatabaseFile();
 		} else {
@@ -146,6 +173,13 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 		cv.put(columnNames_[9], longitude_);
 		cv.put(columnNames_[10], altitude_);
 		cv.put(columnNames_[11], speed_);
+		cv.put(columnNames_[12], azimuth_);
+		cv.put(columnNames_[13], pitch_);
+		cv.put(columnNames_[14], roll_);
+		cv.put(columnNames_[15], mfx_);
+		cv.put(columnNames_[16], mfy_);
+		cv.put(columnNames_[17], mfz_);
+		cv.put(columnNames_[18], uploaded_);
 		db.insert(schema_.tableName_, null, cv);
 	}
 
@@ -159,11 +193,16 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 
 	}
-
+	public Cursor getCursor() {
+		Cursor cursor 
+		= getWritableDatabase().query(TABLE, null, "uploaded = 0", null, null, null, null);
+		return cursor;
+	}
 	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+	public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
 		// TODO Auto-generated method stub
-
+		db.execSQL(schema_.getDropSchema());
+		db.execSQL(schema_.getCreateSchema());
 	}
 
 	public void setAccelerometerValues(long timestamp, float accelx,
@@ -183,13 +222,37 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 		accelz_ = accelz;
 	}
 
-	public void setLocationValues(long timestamp, 
-								  float accuracy,
-								  float bearing, 
-								  double altitude, 
-								  double latitude, 
-								  double longitude,
-								  float speed) {
+	public void setOrientationValues(long timestamp, float azimuth,
+			float pitch, float roll) {
+		// TODO Auto-generated method stub
+		if (accelx_ == null) {
+			accelx_ = 0F; // 1
+			accely_ = 0F; // 2
+			accelz_ = 0F; // 3
+		}
+		timestamp_ = timestamp;
+		azimuth_ = azimuth;
+		pitch_ = pitch;
+		roll_ = roll;
+	}
+
+	public void setMagneticFieldValues(long timestamp, float mfx, float mfy,
+			float mfz) {
+		// TODO Auto-generated method stub
+		if (accelx_ == null) {
+			accelx_ = 0F; // 1
+			accely_ = 0F; // 2
+			accelz_ = 0F; // 3
+		}
+		timestamp_ = timestamp;
+		mfx_ = mfx;
+		mfy_ = mfy;
+		mfz_ = mfz;
+	}
+
+	public void setLocationValues(long timestamp, float accuracy,
+			float bearing, double altitude, double latitude, double longitude,
+			float speed) {
 		// TODO Auto-generated method stub
 		if (accelx_ == null) {
 			timestamp_ = timestamp;
@@ -209,4 +272,53 @@ public class RoadConditionSensorDatabaseHelper extends SQLiteOpenHelper {
 		bearing_ = bearing;
 	}
 
+	public Boolean valuesAvailable() {
+
+		return (timestamp_ != null && // 0
+				accelx_ != null && // 1
+				accely_ != null && // 2
+				accelz_ != null && // 3
+				deltaAccelx_ != null && // 4
+				deltaAccely_ != null && // 5
+				deltaAccelz_ != null && // 6
+				accuracy_ != null && // 7
+				bearing_ != null && // 8
+				latitude_ != null && // 9
+				longitude_ != null && // 10
+				altitude_ != null && // 11
+				speed_ != null && // 12
+				mfx_ != null && // 16
+				mfy_ != null && // 17
+		mfz_ != null); // 18
+
+	}
+
+	public void sampleValues() {
+
+		float[] mags = new float[3];
+		mags[0] = mfx_;
+		mags[1] = mfy_;
+		mags[2] = mfz_;
+		float[] accels = new float[3];
+		accels[0] = accelx_;
+		accels[1] = accely_;
+		accels[2] = accelz_;
+		float[] I = new float[16];
+		float[] R = new float[16];
+		float[] outR = new float[16];
+		float[] orientationValues = new float[3];
+
+		SensorManager.getRotationMatrix(R, I, accels, mags);
+		SensorManager.remapCoordinateSystem(R, SensorManager.AXIS_X,
+				SensorManager.AXIS_Z, outR);
+		SensorManager.getOrientation(outR, orientationValues);
+		azimuth_ = orientationValues[0];
+		pitch_ = orientationValues[1];
+		roll_ = orientationValues[2];
+		insert(getWritableDatabase());
+	}
+	void deleteRows(List<Integer> idsToBeDeleted) {
+		String whereClause = RoadConditionSensorDatabaseHelper.ID_FIELD + " IN (" + TextUtils.join(",", idsToBeDeleted) + ")";
+		getWritableDatabase().delete(TABLE, whereClause, null);
+	}
 }

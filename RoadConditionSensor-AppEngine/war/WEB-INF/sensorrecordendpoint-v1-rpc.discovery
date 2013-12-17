@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/Li5U1JACI7G756ldqForDR4ijW0\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/39FX8EpLWZKEkGFMCm6yxAKzmX4\"",
  "discoveryVersion": "v1",
  "id": "sensorrecordendpoint:v1",
  "name": "sensorrecordendpoint",
@@ -119,6 +119,18 @@
    "id": "SensorRecord",
    "type": "object",
    "properties": {
+    "accelx": {
+     "type": "number",
+     "format": "float"
+    },
+    "accely": {
+     "type": "number",
+     "format": "float"
+    },
+    "accelz": {
+     "type": "number",
+     "format": "float"
+    },
     "accuracy": {
      "type": "number",
      "format": "float"
@@ -127,7 +139,23 @@
      "type": "number",
      "format": "double"
     },
+    "azimuth": {
+     "type": "number",
+     "format": "float"
+    },
     "bearing": {
+     "type": "number",
+     "format": "float"
+    },
+    "deltaAccelx": {
+     "type": "number",
+     "format": "float"
+    },
+    "deltaAccely": {
+     "type": "number",
+     "format": "float"
+    },
+    "deltaAccelz": {
      "type": "number",
      "format": "float"
     },
@@ -141,6 +169,26 @@
     "longitude": {
      "type": "number",
      "format": "double"
+    },
+    "mfx": {
+     "type": "number",
+     "format": "float"
+    },
+    "mfy": {
+     "type": "number",
+     "format": "float"
+    },
+    "mfz": {
+     "type": "number",
+     "format": "float"
+    },
+    "pitch": {
+     "type": "number",
+     "format": "float"
+    },
+    "roll": {
+     "type": "number",
+     "format": "float"
     },
     "speed": {
      "type": "number",

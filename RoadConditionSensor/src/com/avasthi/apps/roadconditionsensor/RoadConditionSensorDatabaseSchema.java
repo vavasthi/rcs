@@ -40,7 +40,7 @@ public class RoadConditionSensorDatabaseSchema {
 	}
 
 	public void addAutomaticId() {
-		columns_.add(new Column("_id", Column.INTEGER,
+		columns_.add(new Column(RoadConditionSensorDatabaseHelper.ID_FIELD, Column.INTEGER,
 				"PRIMARY KEY AUTOINCREMENT"));
 	}
 
@@ -70,6 +70,9 @@ public class RoadConditionSensorDatabaseSchema {
 		}
 		sql += ")";
 		return sql;
+	}
+	public String getDropSchema() {
+		return "DROP TABLE " + tableName_;
 	}
 	public String[] getColumnNames() {
 		String[] names = new String[columns_.size()];

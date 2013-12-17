@@ -140,6 +140,30 @@
             "type" : "string",
             "format" : "date-time"
           },
+          "speed" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "accelx" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "accely" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "accelz" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "azimuth" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "pitch" : {
+            "type" : "number",
+            "format" : "float"
+          },
           "altitude" : {
             "type" : "number"
           },
@@ -153,11 +177,35 @@
           "longitude" : {
             "type" : "number"
           },
-          "speed" : {
+          "roll" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "mfx" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "mfy" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "mfz" : {
             "type" : "number",
             "format" : "float"
           },
           "accuracy" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "deltaAccelx" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "deltaAccely" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "deltaAccelz" : {
             "type" : "number",
             "format" : "float"
           }

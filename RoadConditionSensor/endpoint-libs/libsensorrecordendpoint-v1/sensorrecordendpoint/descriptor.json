@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/sensorrecordendpoint/v1/20131130062126/java/1.16.0-rc/avasthi.com-sensorrecordendpoint-v1-20131130062126-java-1.16.0-rc-sources.jar", 
-      "path": "avasthi.com-sensorrecordendpoint-v1-20131130062126-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/sensorrecordendpoint/v1/20131217075646/java/1.16.0-rc/avasthi.com-sensorrecordendpoint-v1-20131217075646-java-1.16.0-rc-sources.jar", 
+      "path": "avasthi.com-sensorrecordendpoint-v1-20131217075646-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-11-30 06:21"
+      "timestamp": "2013-12-17 07:56"
     }, 
     {
-      "path": "avasthi.com-sensorrecordendpoint-v1-20131130062126-java-1.16.0-rc.jar.properties", 
+      "path": "avasthi.com-sensorrecordendpoint-v1-20131217075646-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "apps.roadconditionsensor", 
   "language_version": "1.16.0-rc", 
   "id": "sensorrecordendpoint:v1", 
-  "revision": 20131130062126
+  "revision": 20131217075646
 }
