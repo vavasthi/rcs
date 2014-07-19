@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/39FX8EpLWZKEkGFMCm6yxAKzmX4\"",
+ "etag": "\"MKGA2miAJpVGF7yQTQhsoDXpye8/39FX8EpLWZKEkGFMCm6yxAKzmX4\"",
  "discoveryVersion": "v1",
  "id": "sensorrecordendpoint:v1",
  "name": "sensorrecordendpoint",
