@@ -80,6 +80,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "businessendpoint.removeBusiness" : {
+      "path" : "business/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
     "businessendpoint.listBusiness" : {
       "path" : "business",
       "httpMethod" : "GET",
@@ -103,27 +124,6 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "businessendpoint.removeBusiness" : {
-      "path" : "business/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
       }
     }
   },
@@ -186,12 +186,12 @@
           "$ref" : "Business"
         }
       },
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness" : {
+      },
       "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.listBusiness" : {
         "response" : {
           "$ref" : "CollectionResponse_Business"
         }
-      },
-      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness" : {
       }
     }
   }

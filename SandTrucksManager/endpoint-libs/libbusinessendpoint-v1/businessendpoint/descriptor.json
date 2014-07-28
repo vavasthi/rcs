@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/businessendpoint/v1/20140719194620/java/1.18.0-rc/avasthi.com-businessendpoint-v1-20140719194620-java-1.18.0-rc-sources.jar", 
-      "path": "avasthi.com-businessendpoint-v1-20140719194620-java-1.18.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/businessendpoint/v1/20140727064559/java/1.18.0-rc/avasthi.com-businessendpoint-v1-20140727064559-java-1.18.0-rc-sources.jar", 
+      "path": "avasthi.com-businessendpoint-v1-20140727064559-java-1.18.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2014-07-19 19:46"
+      "timestamp": "2014-07-27 06:46"
     }, 
     {
-      "path": "avasthi.com-businessendpoint-v1-20140719194620-java-1.18.0-rc.jar.properties", 
+      "path": "avasthi.com-businessendpoint-v1-20140727064559-java-1.18.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -675,5 +675,5 @@
   "packagePath": "apps.android.sandtrucks", 
   "language_version": "1.18.0-rc", 
   "id": "businessendpoint:v1", 
-  "revision": 20140719194620
+  "revision": 20140727064559
 }
