@@ -1,0 +1,198 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://sand-truck-system-2014.appspot.com/_ah/api",
+  "name" : "businessendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://sand-truck-system-2014.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "avasthi.com",
+  "ownerName" : "avasthi.com",
+  "packagePath" : "apps.android.sandtrucks",
+  "methods" : {
+    "businessendpoint.removeBusiness" : {
+      "path" : "business/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "businessendpoint.insertBusiness" : {
+      "path" : "business",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.insertBusiness",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessendpoint.updateBusiness" : {
+      "path" : "business",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.updateBusiness",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessendpoint.getBusiness" : {
+      "path" : "business/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.getBusiness",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessendpoint.listBusiness" : {
+      "path" : "business",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.listBusiness",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Business" : {
+        "id" : "Business",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "poc" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Business" : {
+        "id" : "CollectionResponse_Business",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Business"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.removeBusiness" : {
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.insertBusiness" : {
+        "request" : {
+          "$ref" : "Business"
+        },
+        "response" : {
+          "$ref" : "Business"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.updateBusiness" : {
+        "request" : {
+          "$ref" : "Business"
+        },
+        "response" : {
+          "$ref" : "Business"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.getBusiness" : {
+        "response" : {
+          "$ref" : "Business"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessEndpoint.listBusiness" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Business"
+        }
+      }
+    }
+  }
+}

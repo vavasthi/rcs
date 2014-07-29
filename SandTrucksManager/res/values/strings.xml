@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SandTrucksManager</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="action_compose">Compose</string>
+    <string name="phone_number_label">Phone Number</string>
+    <string name="email_label">Email</string>
+    <string name="full_name_label">Full Name</string>
+    <string name="please_wait">Please Wait#8230;</string>
+    <string name="please_wait_message">Synchronizing</string>
+    
+</resources>

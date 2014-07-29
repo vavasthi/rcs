@@ -1,0 +1,229 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://sand-truck-system-2014.appspot.com/_ah/api",
+  "name" : "businessmembershipendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://sand-truck-system-2014.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "avasthi.com",
+  "ownerName" : "avasthi.com",
+  "packagePath" : "apps.android.sandtrucks",
+  "methods" : {
+    "businessmembershipendpoint.listBusinessMembership" : {
+      "path" : "businessmembership",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.listBusinessMembership",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessmembershipendpoint.getBusinessMembership" : {
+      "path" : "businessmembership/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.getBusinessMembership",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessmembershipendpoint.updateBusinessMembership" : {
+      "path" : "businessmembership",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.updateBusinessMembership",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "businessmembershipendpoint.removeBusinessMembership" : {
+      "path" : "businessmembership/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.removeBusinessMembership",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "businessmembershipendpoint.insertBusinessMembership" : {
+      "path" : "businessmembership",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.insertBusinessMembership",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_BusinessMembership" : {
+        "id" : "CollectionResponse_BusinessMembership",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "BusinessMembership"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "BusinessMembership" : {
+        "id" : "BusinessMembership",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "user" : {
+            "$ref" : "User"
+          },
+          "business" : {
+            "$ref" : "Business"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Business" : {
+        "id" : "Business",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "poc" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.listBusinessMembership" : {
+        "response" : {
+          "$ref" : "CollectionResponse_BusinessMembership"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.getBusinessMembership" : {
+        "response" : {
+          "$ref" : "BusinessMembership"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.updateBusinessMembership" : {
+        "request" : {
+          "$ref" : "BusinessMembership"
+        },
+        "response" : {
+          "$ref" : "BusinessMembership"
+        }
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.removeBusinessMembership" : {
+      },
+      "com.avasthi.apps.android.sandtrucks.BusinessMembershipEndpoint.insertBusinessMembership" : {
+        "request" : {
+          "$ref" : "BusinessMembership"
+        },
+        "response" : {
+          "$ref" : "BusinessMembership"
+        }
+      }
+    }
+  }
+}
